@@ -1,0 +1,70 @@
+<div class="container">
+
+    <div class="container-fluid">
+        <p>{{produit.nom}}</p>
+        <div class="row">
+            <div class="col" *ngFor="let p of produit.elements;let i=index" [index_]="i">
+                <mat-card>
+                    <mat-card-header>
+                        <mat-card-title>{{p.nom}}</mat-card-title>
+                        <mat-card-subtitle>{{p.titre}}</mat-card-subtitle>
+                    </mat-card-header>
+                    <img matCardImage [src]="p.photo[0].url" alt="">
+                    <mat-card-content>
+
+
+
+                    </mat-card-content>
+                    <mat-card-actions align="start">
+
+                    </mat-card-actions>
+                    <mat-card-footer>
+                        <button mat-button color="warn" data-bs-toggle="modal" data-bs-target="#exampleModal">
+                          <details></details>
+
+                        </button>
+                    </mat-card-footer>
+                </mat-card>
+
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Button trigger modal -->
+<!--button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">
+  Launch demo modal
+</button-->
+
+<!-- Modal -->
+<div class="modal modal2" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header" style="">
+                <button type="button" class="btn-close" style="width: 5%;height: 30px; background-color: rgba(255, 0, 0, 0.637);" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <div class="row">
+
+                    <mat-card style="width: 40%;" class="col" *ngFor="let p of produit.elements">
+                        <mat-card-header>
+                            <mat-card-title>Title</mat-card-title>
+
+                        </mat-card-header>
+                        <img style="height: 90%;" matCardImage src="../../../assets/image/machine1.jpeg">
+
+                        <mat-card-content>
+
+                        </mat-card-content>
+
+
+                    </mat-card>
+
+                </div>
+            </div>
+            <div class="modal-footer">
+
+            </div>
+        </div>
+    </div>
+</div>

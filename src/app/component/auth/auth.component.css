@@ -1,0 +1,100 @@
+            mat-card {
+                margin: 5rem auto;
+                width: 50rem;
+            }
+            
+            mat-card-title {
+                color: red;
+                font-weight: bold;
+                font-size: 32px;
+            }
+            
+            button {
+                margin: 10px;
+            }
+            
+            .btn1 {
+                background-color: green;
+                color: white;
+            }
+            
+            .btn2 {
+                background-color: gray;
+                color: white;
+            }
+            
+            .eye {
+                position: relative;
+                top: -2.5vw;
+                left: 90.5%;
+            }
+            
+            .log {
+                padding: 7px;
+                margin: 7px;
+                margin-left: 28%;
+                margin-bottom: 15px;
+                cursor: pointer;
+                position: relative;
+                top: 20px;
+            }
+            
+            mat-card-footer {
+                padding: 7px;
+            }
+            
+            @media (max-width:600px) and (min-width:240px) {
+                mat-card {
+                    width: 99%;
+                }
+                .eye {
+                    position: relative;
+                    top: -9vw;
+                    left: 86%;
+                }
+            }
+            
+            .log {
+                position: relative;
+                left: 63%;
+                top: 17px;
+                color: green;
+            }
+            
+            .pop-alert {
+                width: 95%;
+                position: relative;
+                margin-top: 4%;
+                margin-bottom: 2%;
+                height: 40px;
+            }
+            
+            .pop-alert span {
+                position: relative;
+                top: -5px;
+            }
+            
+            .pop-alert span:last-child {
+                position: absolute;
+                left: 90%;
+                top: 12px;
+                color: red;
+            }
+            
+            .danger {
+                background: pink;
+                color: red;
+            }
+            
+            .success {
+                background: rgb(206, 233, 165);
+                color: green;
+            }
+            
+            @media (max-width:800px) and (min-width:600px) {
+                .eye {
+                    position: relative;
+                    top: -4.5vw;
+                    left: 90%;
+                }
+            }

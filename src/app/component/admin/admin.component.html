@@ -1,0 +1,295 @@
+<div class="container">
+    <div>
+        <mat-card style="position: fixed; top: 120px;z-index: 99 !important;" class="col-md-8">
+            <mat-card-content>
+                <button mat-raised-button (click)="ajouter(1,null)">Ajouter Cateorie</button>
+
+                <button mat-raised-button (click)="ajouter(4,null)">Ajouter Produit</button>
+                <span style="margin-left: 38vw;" (click)="logOut()" class="out"><i class="ri-logout-box-line ri-2x btn"></i></span>
+                <span class="infobulle">Deconnexion</span>
+
+            </mat-card-content>
+
+        </mat-card>
+        .
+
+        <div class="alert" *ngIf="alertDanger.visible">
+            <mat-card aria-label="close" [ngClass]="alertDanger.role==1?'danger':'success'">
+                <mat-card-content>
+                    <span style="margin-left: -15px;" [ngClass]="alertDanger.role==1?'danger-span':'success-span'"><i class="ri-shield-check-fill ri-xl"></i></span>
+                    <span style="position: relative;top: -8px;" [ngClass]="alertDanger.role==1?'danger-span':'success-span'"><strong> {{alertDanger.title}} </strong> {{alertDanger.message}}</span>
+                    <span><i class="ri-close-circle-line" ></i></span>
+                </mat-card-content>
+            </mat-card>
+        </div>
+
+
+        <div class=" row " style="margin-top: 150px; ">
+            <div class="col-md-2">
+                <mat-card style="position: fixed;z-index: 200 !important;margin-right: 30%;">
+                    <mat-card-header>
+
+                    </mat-card-header>
+
+                    <mat-card-content>
+                        <div *ngIf="category ">
+                            <div *ngFor="let c of category._embedded.categories ">
+                                <mat-list class="ele-category unselectable">
+                                    <span (click)="getProductByCategorie(c)" [ngClass]="currentCategorie==c.name?'categorie-active':''">{{c.name}}</span>
+                                    <span> <i class="ri-edit-box-line btn " (click)="ajouter(3,c) "></i>
+                                  </span> <span><i style="color: red; " class=" btn ri-chat-delete-line " (click)="deleteCategorie(c.id) "></i></span> </mat-list>
+                                <mat-divider></mat-divider>
+                            </div>
+                        </div>
+                    </mat-card-content>
+                </mat-card>
+            </div>
+            <div class="col-md-5 list-produit">
+                <mat-card>
+                    <mat-card-header>
+                        <mat-card-title>Liste Produit</mat-card-title>
+                    </mat-card-header>
+
+                    <mat-card-content>
+                        <div class="row ">
+                            <div>
+                                <div *ngIf="products ">
+                                    <mat-card class="col-md-5 " *ngFor="let p of products._embedded.products">
+                                        <mat-card-header>
+                                            <mat-card-title> {{p.name}} </mat-card-title>
+                                        </mat-card-header>
+                                        <img matCardImage [src]="service.url+ 'photoProduit/'+p.id ">
+                                        <mat-card-content>
+                                            <div class="les-icon">
+                                                <span (click)="ajouter(5,p)"><i class="ri-edit-box-line btn " style="color: orange;"></i></span>
+                                                <span (click)="deleteProduct(p.id)"><i class="ri-chat-delete-line btn " style="color: red; "></i></span>
+                                                <span (click)="openUploadPhoto(p)"><i class="ri-camera-line btn" style="color: orange;"></i></span>
+                                            </div>
+                                            <div *ngIf="p==currentProduct">
+                                                <input type="file" (change)="onChange($event)">
+                                                <button mat-raised-button (click)="onUploadPhoto()">charger</button>
+                                            </div>
+                                        </mat-card-content>
+                                    </mat-card>
+                                </div>
+                            </div>
+                        </div>
+                    </mat-card-content>
+
+                </mat-card>
+            </div>
+            <div class="col-md-4 ajouter-categorie modal-modifier" id="parent1">
+                <mat-card id="mat-card-1">
+                    <mat-card-header>
+                        <mat-card-title id="card-title">Ajouter Une Nouvelle Categorie</mat-card-title>
+                        <mat-icon (click)="close(1)">close</mat-icon>
+                    </mat-card-header>
+
+                    <mat-card-content id="composant">
+                        <form action=" ">
+                            <div class="form-group">
+                                <label for=" ">Nom categorie</label>
+                                <input type="text " class="form-control " placeholder="Nom de la categorie " name="name " [(ngModel)]="newCategory.name ">
+                            </div>
+                            <div class="form-group">
+                                <label for=" ">Description categorie</label>
+                                <input type="text " class="form-control " placeholder="Description de la categorie " name="description " [(ngModel)]="newCategory.description ">
+                            </div>
+
+                            <div>
+                                <button mat-raised-button class="primary" (click)="addCategorie()">Ajouter La categorie</button>
+                                <button mat-raised-button class="secondary">Annulez</button>
+                            </div>
+                        </form>
+                    </mat-card-content>
+
+
+                </mat-card>
+            </div>
+            <div class="col-md-4 ajouter-produit modal-modifier" id="parent2">
+                <div class="scroll-card">
+                    <mat-card id="mat-card-1 ">
+                        <mat-card-header>
+                            <mat-card-title id="card-title">Ajouter Un Nouveau Produit</mat-card-title>
+                            <mat-icon (click)="close(2) ">close</mat-icon>
+                        </mat-card-header>
+
+                        <mat-card-content id="composant">
+                            <form action=" ">
+                                <div class="form-group ">
+                                    <label for=" ">Nom categorie</label>
+                                    <input type="text " class="form-control" placeholder="Nom de la categorie">
+                                </div>
+                                <div class="form-group ">
+                                    <label for=" ">Description categorie</label>
+                                    <input type="text " class="form-control" placeholder="Description de la categorie ">
+                                </div>
+                                <div class="form-group ">
+                                    <label for=" ">Nom categorie</label>
+                                    <input type="file " class="form-control " placeholder="choisir une photo ">
+                                </div>
+                                <div>
+                                    <button mat-raised-button class="primary ">Action</button>
+                                    <button mat-raised-button class="secondary ">Annulez</button>
+                                </div>
+                            </form>
+                        </mat-card-content>
+
+
+                    </mat-card>
+                </div>
+            </div>
+
+            <div class="col-md-4 modifier-categorie modal-modifier " id="parent3">
+                <mat-card id="mat-card-1 ">
+                    <mat-card-header>
+                        <mat-card-title id="card-title ">Modifier La categorie</mat-card-title>
+                        <mat-icon (click)="close(3) ">close</mat-icon>
+                    </mat-card-header>
+
+                    <mat-card-content id="composant ">
+                        <form [formGroup]="form" (ngSubmit)=updateCategorie()>
+                            <div class="form-group ">
+                                <label for=" ">Id</label>
+                                <input type="text " class="form-control " [placeholder]="singleCategorie?.id" name="id" formControlName="id" disabled>
+                            </div>
+                            <div class="form-group ">
+                                <label for=" ">Nom categorie</label>
+                                <input type="text " class="form-control " [placeholder]="singleCategorie?.name " name="name" formControlName="name">
+                            </div>
+                            <div class="form-group ">
+                                <label for=" ">Description categorie</label>
+                                <input type="text " class="form-control " [placeholder]="singleCategorie?.decription" name="description" formControlName="description">
+                            </div>
+
+                            <div>
+                                <button mat-raised-button class="primary" type="submit">Modifier</button>
+                                <button mat-raised-button class="secondary" type="reset">Annulez</button>
+                            </div>
+                        </form>
+                    </mat-card-content>
+
+
+                </mat-card>
+            </div>
+
+            <div class="col-md-4 " id="parent4">
+                <mat-card>
+                    <mat-card-header>
+                        <mat-card-title>Ajouter un nouveaux produit</mat-card-title>
+                        <mat-icon class="mat-18 " (click)="close(4)">close</mat-icon>
+                    </mat-card-header>
+
+                    <mat-card-content>
+
+                        <form [formGroup]="form2" (ngSubmit)="addNewProduit()">
+
+
+                            <div class="form-group ">
+                                <label for=" ">Nom Produit</label>
+                                <input type="text " class="form-control" formControlName="name">
+                            </div>
+                            <div class="form-group ">
+                                <label for=" ">Prix Produit</label>
+                                <input type="number" class="form-control" formControlName="price">
+                            </div>
+                            <div class="form-group ">
+                                <label for=" ">Description Produit</label>
+                                <input type="text " class="form-control" formControlName="description">
+                            </div>
+
+                            <div class="form-group">
+                                <label for="Disponibilé">Disponible</label>
+                                <span> <input type="radio" name="disponibilite" id="" value="true" formControlName="available" > Oui</span>
+                                <span> <input type="radio" name="disponibilite" id="" value="false" formControlName="available"> Non</span>
+                            </div>
+
+
+                            <div class="form-group ">
+                                <label for=" ">Choisir une categorie pour votre produit</label>
+                            </div>
+                            <div *ngIf="category">
+                                <mat-form-field appearance="fill">
+                                    <mat-label>Choisir une categorie</mat-label>
+                                    <mat-select formControlName="categorie">
+                                        <mat-option *ngFor="let c of category._embedded.categories " [value]="c">
+                                            {{c.name}}
+                                        </mat-option>
+                                    </mat-select>
+                                </mat-form-field>
+                            </div>
+                            <mat-divider></mat-divider>
+                            <div>
+                                <button mat-raised-button type="submit">Ajouter produit</button>
+                                <button mat-raised-button>Annulez</button>
+                            </div>
+
+
+                        </form>
+
+                    </mat-card-content>
+
+
+                </mat-card>
+            </div>
+
+            <div id="parent5" class="col-md-4">
+                <mat-card>
+                    <mat-card-header>
+                        <mat-card-title>Modifier Un produit</mat-card-title>
+                        <i class="ri-camera-fill ri-xl btn" (click)="openModifiePicture()"></i>
+                        <mat-icon class="mat-18" (click)="close(5)">close</mat-icon>
+                    </mat-card-header>
+
+                    <mat-card-content>
+                        <form>
+                            <div class="form-group" *ngIf="inputPicture">
+                                <label for="" class="label">label</label>
+                                <input type="file" class="form-control" (change)="onChange($event)">
+                                <button mat-raised-button (click)="onUploadPhoto()">charger</button>
+                            </div>
+                            <mat-divider></mat-divider>
+                            <div class="form-group">
+                                <label for="">id</label>
+                                <input type="text" class="form-control" name="id" [(ngModel)]="newProduit.id" disabled>
+                            </div>
+                            <div class="form-group">
+                                <label for="">Titre</label>
+                                <input type="text" class="form-control" name="name" [(ngModel)]="newProduit.name" [placeholder]="newProduit?.name">
+                            </div>
+                            <div class="form-group">
+                                <label for="">Description</label>
+                                <input type="text" class="form-control" name="description" [(ngModel)]="newProduit.description" [placeholder]="newProduit?.description">
+                            </div>
+                            <div class="form-group">
+                                <label for="">Price</label>
+                                <input type="number" class="form-control" name="price" [(ngModel)]="newProduit.price" [placeholder]="newProduit?.price">
+                            </div>
+                            <div class="form-group">
+                                <label for="Disponibilé">Disponible</label>
+                                <span> <input type="radio" value="true" name="available"  [(ngModel)]="newProduit.available" > Oui</span>
+                                <span> <input type="radio" value="false" name="available" [(ngModel)]="newProduit.available" > Non</span>
+                            </div>
+                            <div *ngIf="category ">
+                                <mat-form-field appearance="fill">
+                                    <mat-label>Choisir une categorie</mat-label>
+                                    <mat-select [(ngModel)]="newProduit.categorie" name="description">
+                                        <mat-option *ngFor="let c of category._embedded.categories " [value]="c">
+                                            {{c.name}}
+                                        </mat-option>
+                                    </mat-select>
+                                </mat-form-field>
+                            </div>
+                            <div>
+                                <button mat-raised-button (click)="updateProduct()">Modifier</button>
+                                <button mat-raised-button>Annuler</button>
+                            </div>
+                        </form>
+                    </mat-card-content>
+
+                </mat-card>
+            </div>
+
+        </div>
+    </div>
+</div>

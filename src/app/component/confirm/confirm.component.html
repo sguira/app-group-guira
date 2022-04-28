@@ -1,0 +1,13 @@
+<div class="box">
+    <div class="content-container">
+        <h1>Confirmer votre opération</h1>
+        <mat-icon id="close-icon" (click)="closeDialog()" style="position: relative;left: 24vw;top:-9vh;color: coral;cursor: pointer;">close</mat-icon>
+        <span class="content-span full-width">
+          {{data.msg}}
+        </span>
+    </div>
+    <div class="button-operation">
+        <button mat-flat-button class="col-md-5" id="no-button" [mat-dialog-close]="false" style="position: relative;top: 2vh;outline: none;background: coral ;color: cornsilk;margin:1px;">Non</button>
+        <button mat-flat-button class="col-md-5" id="yes-button" [mat-dialog-close]="true" style="position: relative;top: 2vh;outline: none;background: green ;color: cornsilk;margin:1px;">Oui</button>
+    </div>
+</div>

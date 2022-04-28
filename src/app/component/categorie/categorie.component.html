@@ -1,0 +1,48 @@
+<div class="container">
+    <span>
+      <h1>Produits de la categorie{{affiche}} </h1>
+    </span>
+    <div class="col-md-5 categorie">
+        <div class="list-group" *ngFor="let c of categories._embedded.categories">
+            <button mat-button style="width: 100%;background: rgb(15, 15, 15);" [ngClass]="currentCategorie==c?'activer':''" (click)="onNavigateProduit(c)"> {{c.name}} </button>
+        </div>
+
+    </div>
+    <!--div class="col-md-12">
+        <div class="produit" *ngIf="produits">
+            <div class="card btn" *ngFor="let p of produits._embedded.products">
+                <img [src]="service2.url+'photoProduit/'+p.id" class="img-thumbnail" alt=" ">
+                <h1 class="card-title">
+                    {{p.name}}
+                </h1>
+                <div class="card-body text">
+                    <span>{{p.description}}</span>
+                </div>
+                <button class="btn btn-primary" (click)="onNavigateDetails(p)">details ></button>
+            </div>
+
+        </div>
+    </div-->
+    <div class="col-md-12">
+        <div class="produit" *ngIf="produits">
+            <mat-card class="col-md-4 card btn" *ngFor="let p of produits._embedded.products">
+                <mat-card-header>
+                    <mat-card-title>
+                        <h1 class="card-title">
+                            {{p.name}}
+                        </h1>
+                    </mat-card-title>
+                </mat-card-header>
+                <img matCardImage [src]="service2.url+'photoProduit/'+p.id" class="img-thumbnail" alt=" ">
+                <mat-card-content>
+
+                    <!--button class="btn btn-primary" (click)="onNavigateDetails(p)">details ></button-->
+                    <button mat-fab (click)="onNavigateDetails(p)" style="background: #4fe4f5; padding:0px 7px;">details
+                        <mat-icon  class="mat-18"></mat-icon>
+                    </button>
+                </mat-card-content>
+
+            </mat-card>
+        </div>
+    </div>
+</div>

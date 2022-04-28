@@ -1,0 +1,42 @@
+<!--div class="container">
+    <div *ngIf="product">
+        <div class="card col-md-7">
+
+            <div class="row">
+                <img [src]="service2.url+'photoProduit/'+product.id" class="img img-thumbnail col-md-6" alt="">
+                <div class="col-md-6 price">
+                    <h1>
+                        {{product.name}}
+                    </h1>
+                    <p><span>Prix : </span>{{product.price|number}} Fcfa </p>
+                    <p><span>Description :</span> {{product.description}}</p>
+                    <p><span>Disponibilite : </span></p>
+
+                </div>
+            </div>
+
+        </div>
+    </div>
+</div-->
+<div class="container" *ngIf="product">
+    <mat-card>
+        <mat-card-header>
+            <mat-card-title>
+                <h1>
+                    {{product.name}}
+                </h1>
+            </mat-card-title>
+
+        </mat-card-header>
+        <img matCardImage [src]="service2.url+'photoProduit/'+product.id">
+        <mat-card-content>
+
+        </mat-card-content>
+
+        <mat-card-footer>
+            <p><span>Prix : </span>{{product.price|number}} Fcfa </p>
+            <p><span>Description :</span>{{product.description}}</p>
+            <p><span>Disponibilite : </span></p>
+        </mat-card-footer>
+    </mat-card>
+</div>

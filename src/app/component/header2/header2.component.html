@@ -1,0 +1,73 @@
+<div class="container">
+    <div class="container">
+        <!--div class="menu">
+            <input type="checkbox"><i class="ri-menu-line"></i>
+        </div-->
+        <header class="header">
+            <a routerLink="/accueil" class="logo" style="background-color: rgb(236, 233, 233);padding: 3px;border-radius: 4px;">
+                <img src="../../../assets/image/logo-gg.png" height="72" alt="">
+            </a>
+            <ul class="navigation">
+                <li (click)="soul1()" id="soul1" class="btn" routerLink="/accueil">
+                    <i class="ri-home-wifi-line"></i>
+                    <a [ngClass]="currentRoute=='accueil'?'activer':''">Accueil</a>
+                </li>
+                <li (click)="soul2()" id="soul2" routerLink="/categorie" class="btn" [ngClass]="currentRoute=='boutique'?'activer':''">
+                    <i class="ri-shopping-bag-line"></i>
+                    <a>Boutique</a>
+                </li>
+                <li (click)="soul3()" id="soul3" routerLink="/contact" class="btn" [ngClass]="currentRoute=='contact'?'activer':''">
+                    <i class="ri-contacts-book-line"></i>
+                    <a>Contact</a>
+                </li>
+                <li (click)="soul4()" id="soul4" routerLink="/propos" class="btn" [ngClass]="currentRoute=='apropos'?'activer':''">
+                    <i class="ri-information-line"></i>
+                    <a>Apropos</a>
+                </li>
+
+            </ul>
+
+            <div class="search">
+                <input type="text" name="text" class="form-control" placeholder="recherche un produit" [(ngModel)]="text">
+                <i class="ri-search-line icon" (click)="onSearch()" data-bs-toggle="modal" data-bs-target="#exampleModal"></i>
+                <div class="more">
+
+                </div>
+            </div>
+        </header>
+    </div>
+    <div>
+        <div class="img-1 btn" id="buttonup" (click)="toggleUp()">
+            <i class="ri-arrow-up-down-line ri-xl" style="color: black;"></i>
+        </div>
+        <div class="img-1 btn" id="buttondown">
+            <i class="ri-arrow-up-down-line ri-xl" style="color: black;"></i>
+        </div>
+    </div>
+</div>
+
+<!-- Modal -->
+<div class="modal fade" style="position: absolute;top: 10%;background: transparent;" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog" style="position: absolute;left: 71%;top: 15%;">
+        <div class="modal-content" style="width: 300px; padding: 10px;position: absolute;top: 19%;">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">Resultas de votre recherche</h5>
+                <button type="button" class="btn-close" style="position: relative;left: -3%;top: -4%;margin-top: 2%;" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body" style="">
+                <div class="">
+                    <mat-list>
+                        <mat-list-item style="" *ngFor="let r of produitRechercher._embedded.products" (click)="onNavigateDetails(r)" data-bs-dismiss="modal">
+                            <img class="icon-magic-wand" style="padding: 7px;" class="" width="50" [src]="service2.url+'photoProduit/'+r.id" alt="">
+                            <span> {{r.name}} </span>
+                        </mat-list-item>
+                        <hr>
+                    </mat-list>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+            </div>
+        </div>
+    </div>
+</div>

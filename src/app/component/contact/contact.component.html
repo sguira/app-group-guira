@@ -1,0 +1,109 @@
+<div class="container">
+    <div class="row">
+
+        <div class="col">
+            <mat-card class="mat-card-2" style="">
+                <mat-card-header>
+
+
+                </mat-card-header>
+
+                <mat-card-content>
+                    <div class="element">
+                        <i class="ri-map-pin-2-fill ri-lg" style="width: 20px;"></i>
+                        <label for="">Bureau</label>
+                        <p>Cocody Plateau-Dokui</p>
+                    </div>
+                    <hr>
+                    <div class="element">
+                        <i class="ri-database-line ri-lg"></i>
+                        <label for="">Chantiers et Entrepots</label>
+                        <ul>
+                            <li>Songhon Kassemble</li>
+                            <li>Songhon Kassemble Hopital</li>
+                            <li>Angré après terrain</li>
+                            <li>Bingerville</li>
+                        </ul>
+                    </div>
+                    <hr>
+                    <div class="element">
+                        <i class="ri-phone-fill ri-lg"></i>
+                        <label for="">Telephone</label>
+                        <p>(+225) 24 38 57 66 - 07 06 02 52 - 03 45 41 35</p>
+                    </div>
+                    <hr>
+                    <div class="element">
+                        <i class="ri-mail-fill ri-lg"></i>
+                        <label for="">Message</label>
+                        <p>(+225) 24 38 57 66 - 07 06 02 52 - 03 45 41 35</p>
+                    </div>
+                    <hr>
+
+                </mat-card-content>
+
+            </mat-card>
+        </div>
+        <div class="col">
+            <mat-card>
+                <mat-card-header>
+                    <mat-card-title>
+                        <h1>Nous contacter</h1>
+                    </mat-card-title>
+
+                </mat-card-header>
+                <mat-card-content>
+                    <form [formGroup]="userGroup" (ngSubmit)="onSubmit()">
+                        <div class="form-group">
+                            <label for="my-input">Nom complet</label>
+                            <input id="name" class="form-control" type="text" name="name" formControlName="name" placeholder="Ex:mohamed Ali">
+                            <mat-card class="alert" *ngIf="error==1">
+                                <mat-card-content>
+                                    <span><i class="ri-shield-check-fill ri-xl" style="margin-left: -10px;"></i></span><span>veullez saisir un nom valable</span><span><i class="ri-close-fill ri-xl" style="margin-left: 18.5vw;"></i></span>
+                                </mat-card-content>
+                            </mat-card>
+                        </div>
+                        <div class="form-group">
+                            <label for="my-input">Email</label>
+                            <input id="name" class="form-control" type="email" name="email" formControlName="email" placeholder="Ex:..@gmail.com">
+                            <mat-card class="alert" *ngIf="error==2">
+                                <mat-card-content>
+                                    <span><i class="ri-shield-check-fill ri-xl" style="margin-left: -10px;"></i></span><span>vérifier votre mail</span><span><i class="ri-close-fill ri-xl" style="margin-left: 18.5vw;"></i></span>
+                                </mat-card-content>
+                            </mat-card>
+                        </div>
+                        <div class="form-group">
+                            <label for="my-input">Objet</label>
+                            <input id="name" class="form-control" type="text" name="objet" formControlName="objet" placeholder="Ex:Prix Brique">
+                        </div>
+                        <div class="form-group">
+                            <label for="my-input">Message</label>
+                            <textarea name="message" id="" class="form-control" cols="15" rows="5" formControlName="message" placeholder="Votre Message"></textarea>
+                            <mat-card class="alert" *ngIf="error==3">
+                                <mat-card-content>
+                                    <span><i class="ri-shield-check-fill ri-xl" style="margin-left: -10px;"></i></span><span>le champ message est vide</span><span><i class="ri-close-fill ri-xl" style="margin-left: 18.5vw;"></i></span>
+                                </mat-card-content>
+                            </mat-card>
+                        </div>
+                        <div class="button-pos">
+                            <mat-progress-bar mode="indeterminate" *ngIf="progressBar"></mat-progress-bar>
+                            <button mat-raised-button class="bt2" type="reset">Annulez</button>
+                            <button mat-raised-button id="btn-envoie" class="bt1 btn-primary" type="submit">Envoyez</button><span class="infobulle">Envoyez votre mail !!</span>
+
+                            <mat-card class="alert" *ngIf="alert==1">
+                                <mat-card-content>
+                                    <span><i class="ri-shield-check-fill ri-xl" style="margin-left: -10px;"></i></span><strong>Messae envoyé !</strong> Nous avons reçu votre message<span><i class="ri-close-fill ri-xl" style="margin-left: 18.5vw;"></i></span>
+                                </mat-card-content>
+                            </mat-card>
+
+                            <mat-card class="alert" *ngIf="alert==2">
+                                <mat-card-content>
+                                    <span><i class="ri-shield-check-fill ri-xl" style="margin-left: -10px;"></i></span><span><strong>Vérifier votre connexion !</strong></span><span><i class="ri-close-fill ri-xl" style="margin-left: 18.5vw;"></i></span>
+                                </mat-card-content>
+                            </mat-card>
+                        </div>
+                    </form>
+                </mat-card-content>
+            </mat-card>
+        </div>
+    </div>
+</div>

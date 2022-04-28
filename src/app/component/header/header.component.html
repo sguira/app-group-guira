@@ -1,0 +1,85 @@
+<div *ngIf="isLoader.isLoading | async " class="loading">
+    <mat-progress-bar mode="indeterminate"></mat-progress-bar>
+</div>
+<nav class="navbar navbar-expand-lg navbar-light header">
+
+    <a routerLink="/accueil" class="navbar-brand logo" style="background-color: rgb(236, 233, 233);padding: 3px;border-radius: 4px;">
+        <img src="../../../assets/image/logo-gg.png" height="72" alt="">
+    </a>
+    <!--button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon" ></span>
+  </button-->
+
+    <div style="border-color: #0f0f0f !important;">
+        <div class="center">
+            <ul class="navbar-nav">
+                <li class="l1" id="lien1" (click)="onActive('home')" [ngClass]="currentLien=='home'?'active':''">
+                    <a class="a" routerLink="accueil"> <i class="ri-home-wifi-line ri-lg"></i> <span> Accueil</span> </a>
+                </li>
+                <li class="l2" id="lien2" (click)="onActive('boutique')" [ngClass]="currentLien=='boutique'?'active':''">
+                    <a class="a" routerLink="categorie"> <i class="ri-shopping-bag-line ri-lg"></i> <span>Boutique</span> </a>
+                </li>
+                <li class="l3" id="lien2" (click)="onActive('contact')" [ngClass]="currentLien=='contact'?'active':''">
+                    <a class="a" id="lien3" routerLink="contact"><i class="ri-contacts-book-line ri-lg"></i> <span>Contact</span> </a>
+                </li>
+                <li class="l4" (click)="onActive('apropos')" [ngClass]="currentLien=='apropos'?'active':''">
+                    <a class="a" id="lien4" routerLink="propos"><i class="ri-information-line ri-lg"></i><span>Apropos</span></a>
+                </li>
+            </ul>
+            <form class="form-inline search" (mousedown)="openModal()" (keyup)="onSearch()" (mouseleave)="closeModal()">
+                <input class="form-control mr-sm-2" name="text" type="search" placeholder="Search" [(ngModel)]="text" aria-label="Search">
+                <i class="ri-search-line icon" (click)="onSearch()" data-bs-toggle="modal" data-bs-target="#exampleModal"></i>
+                <mat-card id="modal" class="modal">
+                    <div class="modal-row">
+                        <mat-card-header>
+                            <mat-card-title>Resultas</mat-card-title>
+
+                        </mat-card-header>
+
+                        <mat-card-content>
+                            <div class="">
+                                <mat-list *ngIf="produitRechercher">
+                                    <mat-list-item *ngFor="let r of produitRechercher._embedded.products" (click)="onNavigateDetails(r)">
+                                        <img class="icon-magic-wand" class="" [src]="service2.url+'photoProduit/'+r.id" alt="">
+                                        <span> {{r.name}} </span>
+                                    </mat-list-item>
+                                    <mat-divider></mat-divider>
+                                </mat-list>
+                            </div>
+                        </mat-card-content>
+                    </div>
+
+                </mat-card>
+            </form>
+        </div>
+
+    </div>
+</nav>
+
+<!------------------------>
+<!-- Modal -->
+<!--div class="modal fade" style="position: absolute;top: 10%;background: transparent;" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+
+    <div class="modal-dialog" style="position: absolute;left: 71%;top: 15%;">
+        <div class="modal-content" style="width: 300px; padding: 10px;position: absolute;top: 19%;">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">Resultas de votre recherche</h5>
+                <button type="button" class="btn-close" style="position: relative;left: -3%;top: -4%;margin-top: 2%;" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body" style="">
+                <div class="">
+                    <mat-list *ngIf="produitRechercher">
+                        <mat-list-item style="" *ngFor="let r of produitRechercher._embedded.products" (click)="onNavigateDetails(r)" data-bs-dismiss="modal">
+                            <img class="icon-magic-wand" class="" [src]="service2.url+'photoProduit/'+r.id" alt="">
+                            <span> {{r.name}} </span>
+                        </mat-list-item>
+                        <mat-divider></mat-divider>
+                    </mat-list>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+            </div>
+        </div>
+    </div>
+</div-->

@@ -1,0 +1,35 @@
+p {
+    font-size: 10px;
+}
+
+p span {
+    background: rgb(255, 108, 54);
+    padding: 4px;
+    margin-bottom: 25px;
+    border-radius: 2px;
+    color: white;
+    font-weight: bold;
+}
+
+h1 {
+    color: white;
+    font-weight: bolder;
+    font-size: 3rem;
+}
+
+mat-card {
+    width: 60%;
+    height: 40%;
+    margin: 2rem auto;
+    background: linear-gradient(to bottom, #00d2ff 0%, white);
+}
+
+mat-card-footer {
+    padding-left: 20px;
+}
+
+@media (max-width:600px) {
+    mat-card {
+        width: 95%;
+    }
+}

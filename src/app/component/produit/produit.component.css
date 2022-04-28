@@ -1,0 +1,55 @@
+* {
+    -webkit-user-select: none;
+}
+
+img {
+    height: 350px;
+}
+
+mat-card {
+    margin: 20px;
+    -webkit-user-select: none;
+}
+
+.container-fluid p {
+    font-size: 60px;
+    margin-top: 40px;
+    margin-bottom: 40px;
+    text-align: center;
+    font-weight: 80px;
+    color: red;
+    font-family: 'Courier New', Courier, monospace;
+}
+
+button {
+    height: 60px;
+    width: 100%;
+}
+
+button:hover {
+    background: rgb(17, 43, 99);
+    color: white;
+}
+
+details {
+    font-size: 20px;
+    -webkit-user-select: none;
+}
+
+
+/*-------------------------------------------------------------------*/
+
+.modal2 {}
+
+.row-cols-2 {
+    width: 100%;
+}
+
+.modal-body .col img {
+    width: 132%;
+    height: 100%;
+}
+
+.mat-card {
+    border-radius: 0px;
+}

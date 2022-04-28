@@ -1,0 +1,205 @@
+<div>
+    <app-slider></app-slider>
+</div>
+
+
+<div class="container">
+    <div class="row">
+        <div class="col">
+
+            <mat-card class="mat-card">
+                <mat-card-header>
+                    <mat-card-title>
+                        <div class="titre">
+                            <h1> <i class="ri-slideshow-line ri-xl"></i> Présentation</h1>
+                        </div>
+                    </mat-card-title>
+                </mat-card-header>
+
+                <mat-card-content>
+                    <p>Groupe Guira ou encore les entreprises Guira représente aujourd’hui au total, trois entreprises légalement constituées ( ETS GUIRA, GUIRA TRADING & MANAGEMENT, ENTREPRISE DE TRAVAUX DE CONSTRUCTION ET DE COMMERCE) exerçant dans le
+                        Batiment, les Travaux Publique, Assainissement et Import-Export</p>
+                </mat-card-content>
+
+            </mat-card>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col">
+            <span>
+              <h1>Sites de production du Groupe (Les Entreprises GUIRA)</h1>
+            </span>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col" *ngFor="let entreprise of entreprises">
+            <div class="card2">
+                <div class="card-header">
+                    <img [src]="entreprise.photo" alt="rover" />
+                </div>
+                <div class="card-body">
+                    <span class="tag tag-teal">Chantier</span>
+                    <h4>
+                        {{entreprise.titre}}
+                    </h4>
+                    <p>
+                        {{entreprise.commentaire}}
+                    </p>
+                    <div class="user">
+                        <img [src]="entreprise.profit" alt="user" />
+                        <div class="user-info">
+                            <h5>{{entreprise.nomGerant}}</h5>
+                            <small>2h ago</small>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col">
+            <mat-card>
+                <mat-card-header>
+                    <mat-card-title>
+                        <h1> <i class="ri-hammer-line ri-xl"></i> Nos Service</h1>
+                    </mat-card-title>
+
+                </mat-card-header>
+                <mat-card-content>
+                    <ul class="list">
+                        <li>
+                            <strong>Genie Civil</strong>
+                        </li>
+                        <p>
+                            Vente de matériaux de construction - Import - Export - et prestations diverses. </p>
+                        <li>
+                            <strong>Bâtiment Travaux Publique ( BTP)</strong>
+                        </li>
+                        <p>
+                            La construction des grandes œuvres, les infrastructures Routières, Assainissements, Électrification, Aménagement foncier et Lotissement. Réalisation de plan, Conseil, suivie, estimation quantitative et coût définitif.
+                        </p>
+
+                    </ul>
+                </mat-card-content>
+
+            </mat-card>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col">
+            <div class="container container22" style="margin: 18rem;">
+                <a style="color: white; size: 10px;" target="_blank">Nos Partenaires</a>
+            </div>
+        </div>
+
+    </div>
+
+    <div id="flex-container" class="testimonials col">
+        <div id="left-zone">
+            <ul class="list">
+                <li class="item">
+                    <input type="radio" id="radio_testimonial-1" name="basic_carousel" checked="checked" />
+                    <label class="label_testimonial-1" for="radio_testimonial-1">PROMOGIM</label>
+                    <div class="content-test content_testimonial-1">
+                        <span class="picto"></span>
+                        <img src="../../../assets/image/promogim.jpg" alt="">
+                        <h1>PROMOGIM</h1>
+                        <p>“The team really takes pride in their work. If I didn’t know any better I would think they actually worked for my company.”</p>
+                        <p class="testimonialFrom">Bill, Owner</p>
+                        <p class="testimonialState">Rochester, NY</p>
+                    </div>
+                </li>
+                <li class="item">
+                    <input type="radio" id="radio_testimonial-2" name="basic_carousel" />
+                    <label class="label_testimonial-2" for="radio_testimonial-2">GEDF</label>
+                    <div class="content-test content_testimonial-2">
+                        <span class="picto"></span>
+                        <img src="../../../assets/image/gedf.png" width="200" alt="">
+                        <h1>GEDF</h1>
+                        <p>“Quite simply… the service offers prompt response time to my visitors and helps me to better know what type of project a potential customer wants.”</p>
+                        <p class="testimonialFrom">Bill, Owner</p>
+                        <p class="testimonialState">Tucson, AZ</p>
+                        <br>
+                    </div>
+                </li>
+                <li class="item">
+                    <input type="radio" id="radio_testimonial-3" name="basic_carousel" />
+                    <label [class]="'label_testimonial-3'" for="radio_testimonial-3">INTERBAT</label>
+                    <div [class]="'content-test content_testimonial-3'">
+                        <span class="picto"></span>
+                        <img src="../../../assets/image/interbat.png" width="150" alt="">
+                        <h1>INTERBAT</h1>
+                        <p>“I couldn’t believe it. I actually had to hire someone to help me keep up with the new business. I had no idea my website had so much value.”</p>
+                        <p class="testimonialFrom">Marlene, Owner</p>
+                        <p class="testimonialState">Monterey, CA</p>
+                    </div>
+                </li>
+                <li class="item">
+                    <input type="radio" id="radio_testimonial-4" name="basic_carousel" />
+                    <label class="label_testimonial-4" for="radio_testimonial-4">SIPIM</label>
+                    <div class="content-test content_testimonial-4">
+                        <span class="picto"></span>
+                        <img src="../../../assets/image/Logo-SIPIM.jpg" alt="">
+                        <h1>SIPIM</h1>
+                        <p>Great company to send leads. Very efficient and pleased with the services. We get lots of leads and that whats important. Support is also great from the managers/support. Thanks YPC Chat</p>
+                        <p class="testimonialFrom">Mark, Owner</p>
+                        <p class="testimonialState">Somerset, VA</p>
+                        <br>
+                    </div>
+                </li>
+                <li class="item">
+                    <input type="radio" id="radio_testimonial-5" name="basic_carousel" />
+                    <label class="label_testimonial-5" for="radio_testimonial-5">CIFTEL MAKINA</label>
+                    <div class="content-test content_testimonial-5">
+                        <span class="picto"></span>
+                        <img src="../../../assets/image/ciftelogo.png" alt="">
+                        <h1>CIFTEL MAKINA</h1>
+                        <p>Great company to send leads. Very efficient and pleased with the services. We get lots of leads and that whats important. Support is also great from the managers/support. Thanks YPC Chat</p>
+                        <p class="testimonialFrom">Mark, Owner</p>
+                        <p class="testimonialState">Somerset, VA</p>
+                        <br>
+                    </div>
+                </li>
+            </ul>
+        </div>
+        <div id="right-zone"></div>
+    </div>
+    <div class="row">
+        <!--div class="row">
+            <h1>LES ENTREPRISE DU GROUPE GUIRA</h1>
+            <div class="col" *ngFor="let p2 of partenaire2">
+                <mat-card>
+                    <mat-card-head style="font-size: 20px;">{{p2.nom}}</mat-card-head>
+                    <img [src]="p2.photo" class="img-thumbnail" alt="">
+                    <mat-card-body style="margin-top: 6px;"> {{p2.content}} </mat-card-body>
+                </mat-card>
+            </div>
+        </div-->
+        <div class="col" *ngFor="let p2 of partenaire2">
+            <div class="card2">
+                <div class="card-header">
+                    <img [src]="p2.photo" alt="rover" />
+                </div>
+                <div class="card-body">
+                    <span class="tag tag-teal">Chantier</span>
+                    <h4>
+                        {{p2.nom}}
+                    </h4>
+                    <p>
+                        {{p2.content}}
+                    </p>
+                    <div class="user">
+                        <!--img [src]="p2.profit" alt="user" />
+                        <div class="user-info">
+                            <h5>{{entreprise.nomGerant}}</h5>
+                            <small>2h ago</small>
+                        </div-->
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+</div>

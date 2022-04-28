@@ -1,0 +1,23 @@
+* {
+    -webkit-user-select: none;
+    -webkit-touch-callout: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+}
+
+div {
+    position: relative;
+    top: 100px;
+    background: rgba(14, 13, 13, 0.925);
+    position: relative;
+    overflow: hidden;
+}
+
+@media all and (max-device-width: 480px) {
+    div {
+        position: relative;
+        top: 125px;
+        overflow: hidden;
+    }
+}

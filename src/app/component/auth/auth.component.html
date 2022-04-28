@@ -1,0 +1,84 @@
+<div class="container">
+    <div class="">
+        <mat-card *ngIf="show==1" class="card">
+            <mat-card-header>
+
+                <mat-card-title><span><i class="ri-admin-line"></i></span> Authentification</mat-card-title>
+                <mat-card-subtitle>Espace Reservé à l'administrateur du site</mat-card-subtitle>
+            </mat-card-header>
+
+            <mat-card-content>
+                <form [formGroup]="form" (ngSubmit)="onConnect()">
+                    <div class="form-group">
+                        <label for="">Identifiant</label>
+                        <input type="text" class="form-control" name="identifiant" formControlName="identifiant">
+                    </div>
+                    <div class="form-group">
+                        <label for="">Mot de passe</label>
+                        <div><input [type]="type" class="form-control" name="password" formControlName="password"><i *ngIf="press" class="ri-eye-line eye btn" (click)="eye()"></i><i *ngIf="!press" class="ri-eye-off-line eye btn" (click)="eye()"></i></div>
+                    </div>
+                    <mat-card *ngIf="alertComponent.visible" class="pop-alert" [ngClass]="alertComponent.role==1?'success':'danger'">
+                        <mat-card-content>
+                            <span><i class="ri-checkbox-circle-fill ri-2x"></i></span>
+                            <span class="text" style="position: relative;top: -15px;">{{alertComponent.text}}</span>
+                            <span><i class="ri-close-fill ri-2x"></i></span>
+                        </mat-card-content>
+                    </mat-card>
+                    <div>
+                        <button mat-flat-button type="submit" class="btn1">Se connecter</button>
+                        <button mat-flat-button class="btn2">Annulez</button>
+                    </div>
+                </form>
+            </mat-card-content>
+            <mat-divider></mat-divider>
+            <mat-card-footer>
+                <button mat-raised-button class="btn1" id="changerCard" (click)="toggleShow(2)">Ajouter Admin</button>
+            </mat-card-footer>
+        </mat-card>
+
+        <div class="">
+            <mat-card *ngIf="show==2">
+                <mat-card-header>
+                    <mat-card-title> <span><i class="ri-admin-line"></i></span>Ajouter Nouvel admin</mat-card-title>
+                    <mat-card-subtitle>Espace Reservé à l'administrateur du site</mat-card-subtitle>
+                </mat-card-header>
+
+                <mat-card-content>
+                    <form [formGroup]="form2" (ngSubmit)="addUser()">
+                        <div class="form-group">
+                            <label for="">Votre Identifiant</label>
+                            <input type="text" class="form-control" name="identifiant1" formControlName="identifiant1">
+                        </div>
+                        <div class="form-group">
+                            <label for="">Votre Mot de passe</label>
+                            <input type="password" class="form-control" name="password1" formControlName="password1">
+                        </div>
+                        <div class="form-group">
+                            <label for="">Identifiant du nouveau</label>
+                            <input type="text" class="form-control" name="identifiant2" formControlName="identifiant2">
+                        </div>
+                        <div class="form-group">
+                            <label for="">Password du nouveau</label>
+                            <input type="password" class="form-control" name="password2" formControlName="password2">
+                        </div>
+                        <div>
+                            <button mat-raised-button type="submit" class="btn1" [disabled]="!form2.valid">Se connecter</button>
+                            <button mat-raised-button class="btn2">Annulez</button>
+                        </div>
+                    </form>
+                </mat-card-content>
+                <mat-divider></mat-divider>
+                <mat-card-footer>
+
+                    <span (click)="logIn()" style=""><i class="ri-login-box-line ri-3x log"></i></span>
+                </mat-card-footer>
+                <mat-card *ngIf="alertComponent.visible" class="pop-alert" [ngClass]="alertComponent.role==1?'success':'danger'">
+                    <mat-card-content>
+                        <span><i class="ri-checkbox-circle-fill ri-2x"></i></span>
+                        <span class="text" style="position: relative;top: -15px;">{{alertComponent.text}}</span>
+                        <span><i class="ri-close-fill ri-2x"></i></span>
+                    </mat-card-content>
+                </mat-card>
+            </mat-card>
+        </div>
+    </div>
